@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UrlGeneratorService } from 'nestjs-url-generator/dist/url-generator.service';
+import {
+  UrlGeneratorService,
+  SignControllerUrlArgs,
+} from 'nestjs-url-generator';
 import { TGenerateSignedControllerUrlReturn } from './nest-url-generator.types';
-import { SignControllerUrlArgs } from 'nestjs-url-generator/dist/interfaces';
 
 @Injectable()
 export class NestUrlGeneratorService {
