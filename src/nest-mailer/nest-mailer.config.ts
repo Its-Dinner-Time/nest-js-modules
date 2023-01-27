@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config';
 export default (config: ConfigService) => {
   const EMAIL_HOST: string = config.getOrThrow('EMAIL_HOST'); // 메일서버
   const EMAIL_AUTH_EMAIL: string = config.getOrThrow('EMAIL_AUTH_EMAIL'); // 메일서버의 이메일
+  const EMAIL_PORT = Number(config.get('EMAIL_PORT') || 587); // 메일서버 포트
 
   const EMAIL_AUTH_USERNAME: string = config.getOrThrow('EMAIL_AUTH_USERNAME'); // 메일서버 접속 id
   const EMAIL_AUTH_PASSWORD: string = config.getOrThrow('EMAIL_AUTH_PASSWORD'); // 메일서버 접속 password
@@ -14,7 +15,7 @@ export default (config: ConfigService) => {
   return {
     transport: {
       host: EMAIL_HOST,
-      port: 587,
+      port: EMAIL_PORT,
       auth: {
         user: EMAIL_AUTH_USERNAME,
         pass: EMAIL_AUTH_PASSWORD,
