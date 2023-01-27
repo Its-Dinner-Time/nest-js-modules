@@ -9,7 +9,7 @@ export enum ETimes {
 
 @Injectable()
 export class UtilDateProvider {
-  private readonly formatter = new Intl.DateTimeFormat('ko-kr');
+  private readonly formatter = new Intl.DateTimeFormat();
 
   getFormattedDate(date = new Date()): string {
     return this.formatter.format(date);
