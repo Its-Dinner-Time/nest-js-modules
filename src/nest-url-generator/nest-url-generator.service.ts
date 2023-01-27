@@ -11,7 +11,7 @@ export class NestUrlGeneratorService {
     option: SignControllerUrlArgs,
   ): TGenerateSignedControllerUrlReturn {
     const url = this.urlGeneratorService.signControllerUrl(option);
-    const signed = url.split('signed=').at(-1);
+    const signed = url.split('signed=').slice(-1)[0];
 
     return {
       url,
