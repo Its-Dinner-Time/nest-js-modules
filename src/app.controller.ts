@@ -4,7 +4,10 @@ import { SignedUrlGuard } from 'nestjs-url-generator/dist/signed-url-guard';
 import { AppService } from './app.service';
 import { NestMailerService } from './nest-mailer/nest-mailer.service';
 import { NestUrlGeneratorService } from './nest-url-generator/nest-url-generator.service';
-import { ETimes, UtilDateProvider } from './util-date/util-date.provider';
+import {
+  EUtilDateProviderTimes,
+  UtilDateProvider,
+} from './util-date/util-date.provider';
 
 @Controller()
 export class AppController {
@@ -31,7 +34,10 @@ export class AppController {
     return this.nestUrlGeneratorService.generateSignedControllerUrl({
       controller: AppController,
       controllerMethod: AppController.prototype.authEmail,
-      expirationDate: this.utilDateProvider.addTime(5, ETimes.MIN),
+      expirationDate: this.utilDateProvider.addTime(
+        5,
+        EUtilDateProviderTimes.SEC,
+      ),
     });
   }
 
@@ -41,7 +47,10 @@ export class AppController {
       this.nestUrlGeneratorService.generateSignedControllerUrl({
         controller: AppController,
         controllerMethod: AppController.prototype.authEmail,
-        expirationDate: this.utilDateProvider.addTime(5, ETimes.MIN),
+        expirationDate: this.utilDateProvider.addTime(
+          5,
+          EUtilDateProviderTimes.MIN,
+        ),
       });
 
     return this.nestMailerService.send(
